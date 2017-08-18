@@ -93,5 +93,8 @@ class Record {
       })
     })
   }
+  toJSON(){
+    return JSON.stringify(this.data);
+  }
 }
 module.exports = Record;
