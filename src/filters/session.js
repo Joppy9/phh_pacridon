@@ -1,5 +1,5 @@
 const UserSession = require('../models/user_session');
-const User = require('./models/user');
+const User = require('../models/user');
 
 module.exports = function(app){
   app.use(function(req,res,next){

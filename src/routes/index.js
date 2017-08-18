@@ -31,7 +31,8 @@ module.exports = function (app) {
     });
   });
 
-
+require('./users')(app);
+require('./api')(app);
 
   require('./users')(app);//まとめて返す
   console.log('Example app listening on port 3000!');
