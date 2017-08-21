@@ -7,16 +7,17 @@ module.exports = {
     path: path.resolve(__dirname, 'public')
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env']
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env',"es-2015"]
+          }
         }
       }
-    }
     ]
   }
 };
