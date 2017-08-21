@@ -16,10 +16,11 @@ const path = require('path');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname,'views'));
 
+app.use(express.static(path.resolve(__dirname,'../public')));
+
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({
-  extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.locals.db = require('./db');
 

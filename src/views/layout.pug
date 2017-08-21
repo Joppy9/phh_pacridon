@@ -3,12 +3,13 @@ html
   head
     mate(cherset="UTF-8")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    script(src="/bundle.js")
     block head
       title Pacridon
   body 
     .navbar.navbar-inverse.navbar-static-top
       .container
         .navbar-header
-          a.navbar-brand(herf="/") Pacridon
+          a.navbar-brand(href="/") Pacridon
     .container      
       block content
