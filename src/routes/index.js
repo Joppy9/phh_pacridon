@@ -10,7 +10,7 @@ module.exports = function (app) {
     }
 
     res.locals.currentUser.toots().then((toots) => {
-      res.render("timeline", { toots: toots });
+      res.render("timeline", { toots: toots });//表示
     }).catch((err) => {
       console.log(err);
       res.render('timeline', { error: true })
@@ -31,8 +31,8 @@ module.exports = function (app) {
     });
   });
 
-require('./users')(app);
-require('./api')(app);
+  require('./users')(app);//謎
+  require('./api')(app);
 
   require('./users')(app);//まとめて返す
   console.log('Example app listening on port 3000!');

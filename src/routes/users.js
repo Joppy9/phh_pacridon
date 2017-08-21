@@ -33,7 +33,7 @@ module.exports = function (app) {
         return UserSession.create(user);
       }).then((session) => {
         res.cookie("session_id", session.data.id, {
-          path: "/",
+          path: "/",//ルート
           httpOnly: true,
           expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 30)),
           signed: true
