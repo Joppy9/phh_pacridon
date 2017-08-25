@@ -20,13 +20,34 @@ class Toot extends Record {
     return new Promise((resolve, reject) => {//成功した時にradisのpublishを行う
       insertPromise.then((toot) => {
         let conn = redis()
-        conn.publish('local',this.toJSON());
+        conn.publish('local',
+          JSON.stringify({
+            action: "create", toot: this.asJSON()
+          })
+        );
         resolve(toot);
       }).catch((error) => {
         reject(error);
       })
     });
   }
+  destroy() {
+    return new Promise((resolve, reject) => {
+      let id = this.data.id
+      super.destroy().then((toot) => {
+        let conn = redis()
+        conn.publish('local',
+          JSON.stringify({
+            action: "delete", toot: { id: id }
+          })
+        );
+        resolve(toot);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+  }
 }
+
 
 module.exports = Toot;

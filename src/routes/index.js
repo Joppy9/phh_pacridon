@@ -5,13 +5,9 @@ module.exports = function (app) {
       res.redirect('/login');
       return;
     }
-
       res.render("timeline");//表示
   });
-
-
-
-  require('./users')(app);//謎
+  require('./users')(app);//requireしたということはmodule.exportsでうけとったということで、関数になるということ、その関数をよびだしている。
   require('./api')(app);
 
   require('./users')(app);//まとめて返す

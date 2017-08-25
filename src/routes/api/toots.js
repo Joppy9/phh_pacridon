@@ -6,7 +6,7 @@ module.exports = function (app) {
       res.status(401).json({ 'error': 'Unauthorized' })
       return;
     }
-    res.locals.currentUser.toots().then((toots) => {
+    res.locals.currentUser.toots().order('id','desc').then((toots) => {
       res.json(toots.map((toots) => {
         return toots.data;
       }));
@@ -25,5 +25,22 @@ module.exports = function (app) {
     }).catch((err)=>{
       res.status(500).json({error: err.toString() });
     });
+  });
+
+  app.delete('/api/toots/:id',function(req,res){
+       if (!res.locals.currentUser) {
+      res.status(401).json({ 'error': 'Unauthorized' })
+      return;
+    }
+    res.locals.currentUser.toots().where({
+      id: req.params.id
+    }).then((toots)=>{
+      if(toots.length > 0){//idが重複するはずがない
+        toots[0].destroy().catch(console.error);
+      }
+      res.status(200).end();
+    }).catch((error)=>{
+      res.status(500).json({'error':error.toString()});
+    })
   });
 };

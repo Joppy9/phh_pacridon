@@ -28,7 +28,6 @@ module.exports = function (app) {
     let email = req.body.email;
     let password = req.body.password;
     //正しいかどうかチェック
-   
       User.authenticate(email, password).then((user) => {
         return UserSession.create(user);
       }).then((session) => {
@@ -38,17 +37,6 @@ module.exports = function (app) {
           expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 30)),
           signed: true
         });
-      /*if (users.length < 1) {
-        throw new Error("User not found");
-      }
-      let user = users[0];
-      let salt = user.data.salt;
-      let sha512 = crypto.createHash('sha512');
-      sha512.update(salt);
-      sha512.update(pass);
-      let hash = sha512.digest('hex');
-      if (hash !== user.data.password) {
-        throw new Error("Password is not match")*/
         res.redirect("/");
       }).catch((err) => {
         res.render("login", { error: true });

@@ -93,8 +93,26 @@ class Record {
       })
     })
   }
-  toJSON(){
-    return JSON.stringify(this.data);
+
+  destroy() {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "DELETE FROM ?? WHERE `id` = ?",
+        [this.constructor.tableName(), this.data.id]
+      ).then(() => {
+        this.data.id = null;
+        resolve(this);
+      }).catch((error) => {
+        reject(error)
+      });
+    })
+  }
+
+  asJSON(){
+    return this.data;
+  }
+  toJSON() {
+    return JSON.stringify(this.asJSON());
   }
 }
 module.exports = Record;
