@@ -9,7 +9,15 @@ html
   body 
     .navbar.navbar-inverse.navbar-static-top
       .container
-        .navbar-header
+        .navbar-header.pull-left
           a.navbar-brand(href="/") Pacridon
+        .navbar-header.pull-right
+          a.navbar-brand(href="/login") logout
+        .navbar-header.pull-right
+          a.navbar-brand(href="/signup") signup
+        .navbar-header.pull-right
+          a.navbar-brand(href="/toppage") top
+        .navbar-header.pull-right
+          a.navbar-brand(href="/login") login
     .container      
       block content

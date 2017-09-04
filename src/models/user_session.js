@@ -9,15 +9,15 @@ class UserSession extends Record {
   static columns() {
     return ["user_id"];
   }
-  static insertColumns(){
-    return ["id","user_id"];
+  static insertColumns() {
+    return ["id", "user_id"];
   }
 
-static create(user){
-  return new this({ user_id: user.data.id }).save();
-}
+  static create(user) {
+    return new this({ user_id: user.data.id }).save();
+  }
 
-  insert(){
+  insert() {
     this.data.id = UUID();
     return super.insert();
   }

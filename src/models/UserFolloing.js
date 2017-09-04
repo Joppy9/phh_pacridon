@@ -1,14 +1,13 @@
 const db = require('../db');
 const Record = require('./record');
-const redis = require('../redis')
 
-class Toot extends Record {
+class UserFollowing extends Record {
   static tableName() {
     return "toots","user_following";
   }
 
   static columns() {
-    return ["user_id", "body"]
+    return ["user_id", "body","target_id"]
   }
 
   static create(user, body) {
@@ -50,4 +49,4 @@ class Toot extends Record {
 }
 
 
-module.exports = Toot;
+module.exports = UserFollowing;

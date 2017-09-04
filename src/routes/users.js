@@ -28,18 +28,25 @@ module.exports = function (app) {
     let email = req.body.email;
     let password = req.body.password;
     //正しいかどうかチェック
-      User.authenticate(email, password).then((user) => {
-        return UserSession.create(user);
-      }).then((session) => {
-        res.cookie("session_id", session.data.id, {
-          path: "/",//ルート
-          httpOnly: true,
-          expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 30)),
-          signed: true
-        });
-        res.redirect("/");
-      }).catch((err) => {
-        res.render("login", { error: true });
-      })
-    });
+    User.authenticate(email, password).then((user) => {
+      return UserSession.create(user);
+    }).then((session) => {
+      res.cookie("session_id", session.data.id, {
+        path: "/",//ルート
+        httpOnly: true,
+        expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 30)),
+        signed: true
+      });
+      res.redirect("/");
+    }).catch((err) => {
+      res.render("login", { error: true });
+    })
+  });
+  app.get("/toppage", function (req, res) {
+    res.render('toppage');
+  });
+   app.get("/agree", function (req, res) {
+    res.render('agree');
+  });
 }
+

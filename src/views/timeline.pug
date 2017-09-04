@@ -1,20 +1,19 @@
 extends layout.pug
 block head
-  meta(cherset="UTF-8")
-  //- link(rel="stylesheet" href="/styles/login.css")
+  //-link(rel="stylesheet" href="/styles/login.css")
   title Pacridon
 block content
   #timeline.row
     .col-md-6.col-md-offset-3
       form(v-on:submit="postToot")
-        .form-group
-          textarea.form-control(v-model="newToot.body" placeholder="今何してる？" required)
-        .form-group
+        .form-group.pull-right
           input.btn.btn-primary.btn-lg(type="submit" value="toot!" required)
+        .form-group
+          textarea.panel.panel-default.panel-body(v-model="newToot.body" placeholder="今何してる？" style={"width": "478px","height": "90px"} required)
       #toots
-          .media(v-for="toot in toots")
+          .media.panel.panel-default.panel-body(v-for="toot in toots")
             .media-body
-               .pull-right
-                  button.btn.btn-danger.btn-xs(v-on:click="deleteToot($event,toot.id)")
-                    id.glyphicon.glyphicon-trash
-               | {{ toot.body }} 
+              .pull-right
+                button.btn.btn-danger.btn-xs(v-on:click="deleteToot($event,toot.id)")
+                  id.glyphicon.glyphicon-trash
+              | {{ toot.body }} 

@@ -1,0 +1,20 @@
+
+extends layout.pug
+block head
+  mate(cherset="UTF-8")
+  //- link(rel="stylesheet" href="/styles/login.css")
+  title トップページ
+  body 
+    .button
+          a.navbar-brand(href="/") Pacridon
+block content
+  .row
+    .col-md-6.col-md-offset-3
+      .page-header
+        h1 トップページ 
+      a.navbar-brand.btn(href="/login") 今すぐlogin
+      a.navbar-brand.btn(href="/signup") もしくはsignup
+      img.img-thumbnail(src="/logo.png")
+
+      
+
