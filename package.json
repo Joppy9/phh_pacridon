@@ -2,7 +2,10 @@
   "name": "pacridon",
   "version": "0.0.1",
   "description": "my social blog",
-  "main": "src/index.js",
+  "main": "/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
   "author": "Jou Fujishima",
   "license": "MIT",
   "dependencies": {
@@ -28,5 +31,8 @@
     "webpack": "^3.5.5",
     "webpack-stream": "^4.0.0",
     "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "electron": "^1.7.6"
   }
 }

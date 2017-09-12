@@ -4,7 +4,7 @@ const redis = require('../redis')
 
 class Toot extends Record {
   static tableName() {
-    return "toots","user_following";
+    return "toots";
   }
 
   static columns() {
