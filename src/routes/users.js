@@ -42,11 +42,41 @@ module.exports = function (app) {
       res.render("login", { error: true });
     })
   });
+
   app.get("/toppage", function (req, res) {
     res.render('toppage');
   });
-   app.get("/agree", function (req, res) {
+
+  app.get("/agree", function (req, res) {
     res.render('agree');
+  });
+
+  app.get("/timeline", function (req, res) {
+    res.render('timeline');
+  });
+
+  app.get("/logout", function (req, res) {
+    res.render('logout');
+  });
+  
+  app.post('/logout', function (req, res) {
+    let sessionId = req.signedCookies.session_id;
+    if(sessionId == null || sessionId === undefined) {
+      return res.status(400).send("Not logged in");
+    }
+
+    UserSession.find(sessionId).then((session)=>{
+      return session.destroy();
+    }).then((session) => {
+      res.clearCookie("session_id", {
+        path: "/",//ルート
+        httpOnly: true,
+        signed: true
+      });
+      res.redirect("/");
+    }).catch((err) => {
+      res.render("login", { error: true });
+    })
   });
 }
 

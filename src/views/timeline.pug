@@ -9,7 +9,7 @@ block content
         .form-group.pull-right
           input.btn.btn-primary.btn-lg(type="submit" value="送信" required)
         .form-group
-          textarea.panel.panel-default.panel-body(v-model="newToot.body" placeholder="今何してる？" style={"width": "478px","height": "90px"} required)
+          input.panel.panel-default.panel-body(v-model="newToot.body" placeholder="メッセージ" required)
       #toots
           .media.panel.panel-default.panel-body(v-for="toot in toots")
             .media-body

@@ -32,7 +32,6 @@ class User extends Record {
       })
     });
   }
-
 static authenticate(email,raw_password){
    return new Promise((resolve,reject)=>{
        this.collection().where({ email: email }).then((users) => {

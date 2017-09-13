@@ -95,7 +95,6 @@ domready(function () {
   if (!timeline) {
     return;
   }
-
   var vm = new Vue({
     el: "#timeline",
     data: {
@@ -107,7 +106,6 @@ domready(function () {
         event.preventDefault();
         var fd = new URLSearchParams();
         fd.set('toot', this.newToot.body);
-
         fetch('/api/toots', {
           credentials: 'same-origin',
           method: 'POST',
@@ -121,14 +119,12 @@ domready(function () {
         });
       },
       deleteToot: function deleteToot(event, id) {
-
         for (var i = 0; i < this.toots.length; i++) {
           if (this.toots[i].id === id) {
             this.toots.splice(i, 1);
             break;
           }
         }
-
         if (!event) {
           return;
         };
@@ -154,7 +150,6 @@ domready(function () {
   }).catch(function (error) {
     console.log(error);
   });
-
   var ws = new WebSocket("ws://localhost:3000/api/timeline");
   ws.addEventListener('message', function (event) {
     var message = JSON.parse(event.data);

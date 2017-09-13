@@ -9,15 +9,18 @@ html
   body 
     .navbar.navbar-inverse.navbar-static-top
       .container
-        .navbar-header.pull-left
-          a.navbar-brand(href="/") Pacrichat
-        .navbar-header.pull-right
-          a.navbar-brand(href="/login") logout
-        .navbar-header.pull-right
-          a.navbar-brand(href="/signup") signup
-        .navbar-header.pull-right
-          a.navbar-brand(href="/toppage") top
-        .navbar-header.pull-right
-          a.navbar-brand(href="/login") login
+        ul.nav.nav-tabs
+          li
+            a.navbar-brand(href="/") Pacrichat
+          li
+            a.navbar-brand.glyphicon.glyphicon-log-out(href="/logout") 
+          li
+            a.navbar-brand.glyphicon.glyphicon-log-in(href="/login") 
+          li
+            a.navbar-brand.glyphicon.glyphicon-copy(href="/signup") 
+          li
+            a.navbar-brand.glyphicon.glyphicon-home(href="/toppage") 
+          li
+            a.navbar-brand.glyphicon.glyphicon-user(hreg="/profile")
     .container      
       block content
