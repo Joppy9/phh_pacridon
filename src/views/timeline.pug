@@ -1,6 +1,6 @@
 extends layout.pug
 block head
-  title timeline
+  title chat
   script(src="/notify.js")
 block content
   #timeline.row
@@ -11,9 +11,9 @@ block content
         .form-group
           input.panel.panel-default.panel-body(v-model="newToot.body" placeholder="メッセージ" required)
       #toots
-          .media.panel.panel-default.panel-body(v-for="toot in toots")
-            .media-body
-              .pull-right
-                button.btn.btn-danger.btn-xs(v-on:click="deleteToot($event,toot.id)")
-                  id.glyphicon.glyphicon-trash
-              | {{ toot.body }} 
+        .media.panel.panel-default.panel-body(v-for="toot in toots")
+          .media-body
+            .pull-right
+              button.btn.btn-danger.btn-xs(v-on:click="deleteToot($event,toot.id)")
+                id.glyphicon.glyphicon-trash
+            | {{ toot.body }} 

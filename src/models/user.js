@@ -5,7 +5,6 @@ const Toot = require('./toot');
 const crypto = require('crypto');
 
 class User extends Record {
-
   static tableName() {
     return "users";
   }
@@ -53,7 +52,6 @@ static authenticate(email,raw_password){
       })
    });
 }
-
   toots() {
     return (new Collection(Toot)).where({ user_id: this.data.id });
   }

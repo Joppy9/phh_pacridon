@@ -6,15 +6,12 @@ class Toot extends Record {
   static tableName() {
     return "toots";
   }
-
   static columns() {
     return ["user_id", "body"]
   }
-
   static create(user, body) {
     return new this({ user_id: user.data.id, body: body }).save();
   }
-
   insert() {//絶対保存されたと・・・promiseをwrapする
     let insertPromise = super.insert()
     return new Promise((resolve, reject) => {//成功した時にradisのpublishを行う
@@ -48,6 +45,5 @@ class Toot extends Record {
     })
   }
 }
-
 
 module.exports = Toot;

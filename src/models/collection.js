@@ -8,7 +8,6 @@ class Collection {
     this._limit = undefined
     this._offset = undefined
   }
-
   clone() {
     let cloned = new this.constructor(this.klass)
     cloned._where = Object.assign({}, this._where);
@@ -22,13 +21,11 @@ class Collection {
     assigned._where = Object.assign(assigned._where, value);
     return assigned;//新しいコレクションを返す
   }
-
   order(column,direction="asc"){
     let assigned = this.clone();
     assigned._order = {column: column,direction: direction}
     return assigned;
   }
-
   then(f) {
     let sqlParts = [`SELECT * FROM ??`];
     let sqlValues = [this.klass.tableName()];
@@ -64,5 +61,4 @@ class Collection {
     }).then(f);
   }
 }
-
 module.exports = Collection;

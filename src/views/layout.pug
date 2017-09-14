@@ -11,16 +11,12 @@ html
       .container
         ul.nav.nav-tabs
           li
-            a.navbar-brand(href="/") Pacrichat
+            a.navbar-brand.glyphicon.glyphicon-comment(href="/") 
           li
-            a.navbar-brand.glyphicon.glyphicon-log-out(href="/logout") 
-          li
-            a.navbar-brand.glyphicon.glyphicon-log-in(href="/login") 
-          li
-            a.navbar-brand.glyphicon.glyphicon-copy(href="/signup") 
+            a.navbar-brand.glyphicon.glyphicon-user(href="/user_profile")
           li
             a.navbar-brand.glyphicon.glyphicon-home(href="/toppage") 
-          li
-            a.navbar-brand.glyphicon.glyphicon-user(hreg="/profile")
+          li.pull-right
+            a.navbar-brand.glyphicon.glyphicon-log-out(href="/logout")
     .container      
       block content

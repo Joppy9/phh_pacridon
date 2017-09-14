@@ -74,9 +74,7 @@ class Record {
     let attributes = this.constructor.insertColumns().map((column) => {
       return this.data[column];
     });
-
     sqlValues.push(attributes);
-
     return new Promise((resolve, reject) => {//なにもなし
       db.query(
         "INSERT INTO ?? (??)VALUE(?);",
@@ -93,7 +91,6 @@ class Record {
       })
     })
   }
-
   destroy() {
     return new Promise((resolve, reject) => {
       db.query(
@@ -107,7 +104,6 @@ class Record {
       });
     })
   }
-
   asJSON(){
     return this.data;
   }
