@@ -1,10 +1,10 @@
 const shell = require('electron').shell
 const body = [{ body: 'みんな大好きレポート!' },
-{ body: '楽しいレポート!' },
-{ body: '素敵なレポート!' },
-{ body: 'とりあえずレポート!' },
-{ body: 'エクセレントレポート!' },
-{ body: 'report!!!!' }]
+              { body: '楽しいレポート!' },
+              { body: '素敵なレポート!' },
+              { body: 'とりあえずレポート!' },
+              { body: 'エクセレントレポート!' },
+              { body: 'report!!!!' }]
 
 setTimeout(() => {
   let notification = new Notification(

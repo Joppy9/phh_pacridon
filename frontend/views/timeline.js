@@ -66,7 +66,7 @@ ws.addEventListener('message', function (event) {
       vm.toots.unshift(message.toot);
       break;
     case "delete":
-      vm.deleteToot(null, message.toot.id);
+      vm.deletetoot(null, message.toot.id);
       break;
   }
   //vm.toots.unshift(JSON.parse(event.data));

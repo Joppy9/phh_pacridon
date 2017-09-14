@@ -1,6 +1,6 @@
 extends layout.pug
 block head
-  title chat
+  title timeline
   script(src="/notify.js")
 block content
   #timeline.row
@@ -14,6 +14,6 @@ block content
         .media.panel.panel-default.panel-body(v-for="toot in toots")
           .media-body
             .pull-right
-              button.btn.btn-danger.btn-xs(v-on:click="deleteToot($event,toot.id)")
+              button.btn.btn-danger.btn-xs(v-on:click="deletetoot($event,toot.id)")
                 id.glyphicon.glyphicon-trash
             | {{ toot.body }} 
