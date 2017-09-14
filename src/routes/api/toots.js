@@ -14,9 +14,8 @@ module.exports = function (app) {
       res.status(500).json({ error: error.toString() });
     });
   })
-
   app.post('/api/toots',function(req,res){
-        if (!res.locals.currentUser) {
+      if (!res.locals.currentUser) {
       res.status(401).json({ 'error': 'Unauthorized' })
       return;
     }
@@ -26,7 +25,6 @@ module.exports = function (app) {
       res.status(500).json({error: err.toString() });
     });
   });
-
   app.delete('/api/toots/:id',function(req,res){
        if (!res.locals.currentUser) {
       res.status(401).json({ 'error': 'Unauthorized' })

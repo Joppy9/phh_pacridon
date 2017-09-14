@@ -140,12 +140,14 @@ domready(function () {
       }
     }
   });
-
   fetch('/api/toots', {
     credentials: 'same-origin'
   }).then(function (response) {
     return response.json();
   }).then(function (data) {
+    data.map(function (toot) {
+      toot.created_at = new Date(toot.created_at);
+    });
     vm.toots = data;
   }).catch(function (error) {
     console.log(error);
@@ -153,12 +155,13 @@ domready(function () {
   var ws = new WebSocket("ws://localhost:3000/api/timeline");
   ws.addEventListener('message', function (event) {
     var message = JSON.parse(event.data);
+    message.toot.created_at = new Date();
     switch (message.action) {
       case "create":
         vm.toots.unshift(message.toot);
         break;
       case "delete":
-        vm.deletetoot(null, message.toot.id);
+        vm.deleteToot(null, message.toot.id);
         break;
     }
     //vm.toots.unshift(JSON.parse(event.data));

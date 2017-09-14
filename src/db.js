@@ -5,7 +5,7 @@ db.configure({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'pacridon'
+  database: 'pacrichat'
 });
 
 module.exports = db;

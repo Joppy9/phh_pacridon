@@ -7,10 +7,11 @@ class Toot extends Record {
     return "toots";
   }
   static columns() {
-    return ["user_id", "body"]
+    return ["user_id", "body", "created_at"]
   }
   static create(user, body) {
-    return new this({ user_id: user.data.id, body: body }).save();
+    let current_time = Date.now();
+    return new this({ user_id: user.data.id, body: body, create_at: current_time }).save();
   }
   insert() {//絶対保存されたと・・・promiseをwrapする
     let insertPromise = super.insert()
@@ -45,5 +46,4 @@ class Toot extends Record {
     })
   }
 }
-
 module.exports = Toot;

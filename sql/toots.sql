@@ -4,3 +4,4 @@ CREATE TABLE `toots`(
   `user_id` int(11) NOT NULL,
   `body` TEXT
 );
+ALTER TABLE `toots` ADD column `created_at` TIMESTAMP NOT NULL
